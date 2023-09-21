@@ -8,6 +8,7 @@ import Rank from "./component/Rank/Rank";
 import ImageLinkForm from "./component/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./component/FaceRecognition/FaceRecognition";
 import Signin from "./component/SignIn/Signin";
+import Register from "./component/Register/Register";
 
 const returnClarifaiRequest = (imageURL) => {
   const PAT = "YOUR_PAT";
@@ -106,9 +107,7 @@ class App extends Component {
         <ParticlesBg className="particles" type="cobweb" bg={true} />
 
         <Navigation onRouteChange={this.onRouteChange} />
-        {this.state.route === "signin" ? (
-          <Signin onRouteChange={this.onRouteChange} />
-        ) : (
+        {this.state.route === "home" ? (
           <div>
             <Logo />
             <Rank />
@@ -121,6 +120,10 @@ class App extends Component {
               imageURL={this.state.imageURL}
             />
           </div>
+        ) : this.state.route === "signin" ? (
+          <Signin onRouteChange={this.onRouteChange} />
+        ) : (
+          <Register onRouteChange={this.onRouteChange} />
         )}
       </div>
     );
